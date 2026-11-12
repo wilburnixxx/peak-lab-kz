@@ -1,0 +1,1801 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEAK LAB | Спортивное питание в Казахстане (Алматы, Астана, РК)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            950: '#090a0d',
+                            900: '#101217',
+                            850: '#151820',
+                            800: '#1b1f29',
+                            700: '#262b38',
+                            border: '#232733'
+                        },
+                        accent: {
+                            DEFAULT: '#c2f03c',
+                            hover: '#b0de2e',
+                            muted: 'rgba(194, 240, 60, 0.1)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"Segoe UI"', 'Roboto', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #090a0d;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #262b38;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b4254;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(4px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-dark-950 text-gray-100 font-sans selection:bg-accent selection:text-black antialiased">
+
+    <!-- Верхний лаконичный инфобар -->
+    <div class="bg-dark-900 border-b border-dark-border text-xs text-gray-400 py-2 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+            <div class="flex items-center gap-4">
+                <span class="flex items-center gap-1.5 text-gray-300">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    Доставка по всему Казахстану: Алматы, Астана, Шымкент и все регионы
+                </span>
+                <span class="hidden md:inline text-dark-border">|</span>
+                <span class="hidden md:inline">Оплата через <strong>Kaspi Pay / Kaspi Red 0-0-3</strong></span>
+            </div>
+            <div class="flex items-center gap-4 text-[11px]">
+                <span class="text-accent font-medium">Бесплатная доставка от 25 000 ₸</span>
+                <a href="#lead-magnet" class="text-gray-300 hover:text-white underline">Промокод на 3 000 ₸ на 1-й
+                    заказ</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Шапка / Навигация -->
+    <header class="sticky top-0 z-40 bg-dark-950/90 backdrop-blur-md border-b border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-4 flex items-center justify-between">
+
+            <!-- Логотип -->
+            <a href="#" class="flex items-center gap-2.5 group">
+                <div
+                    class="w-8 h-8 rounded-lg bg-white text-black font-black flex items-center justify-center text-sm tracking-tighter group-hover:bg-accent transition-colors">
+                    ▲
+                </div>
+                <div>
+                    <span class="text-lg font-bold tracking-tight text-white">PEAK <span
+                            class="text-gray-400 font-light">LAB</span></span>
+                    <span class="hidden sm:block text-[9px] tracking-widest uppercase text-gray-500 -mt-1">SPORTS
+                        NUTRITION &bull; KZ</span>
+                </div>
+            </a>
+
+            <!-- Навигация -->
+            <nav class="hidden md:flex items-center gap-7 text-xs font-medium text-gray-300">
+                <a href="#catalog" class="hover:text-accent transition-colors">Витрина товаров</a>
+                <a href="#categories" class="hover:text-accent transition-colors">Категории</a>
+                <a href="#calculator" class="hover:text-accent transition-colors">Калькулятор дозировок</a>
+                <a href="#quality" class="hover:text-accent transition-colors">Сертификация</a>
+                <a href="#faq" class="hover:text-accent transition-colors">Доставка и Kaspi</a>
+            </nav>
+
+            <!-- Правый блок: Контакты + Корзина -->
+            <div class="flex items-center gap-3">
+                <a href="https://wa.me/77000000000" target="_blank"
+                    class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-dark-border text-xs text-gray-300 hover:border-gray-500 transition-colors">
+                    <span class="text-emerald-400">●</span> WhatsApp
+                </a>
+
+                <!-- Кнопка корзины -->
+                <button onclick="toggleCart()"
+                    class="relative flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-dark-850 hover:bg-dark-800 border border-dark-border text-xs font-medium text-white transition-all">
+                    <svg class="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span>Корзина</span>
+                    <span id="cartCountBadge"
+                        class="bg-accent text-black font-bold text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Главный баннер (Hero) — Минималистичный, спокойный, сдержанный -->
+    <section class="border-b border-dark-border bg-gradient-to-b from-dark-950 via-dark-900 to-dark-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+
+                <div class="lg:col-span-7 space-y-6">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-dark-850 border border-dark-border text-[11px] text-gray-300">
+                        <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                        Чистые формулы без скрытых сахаров &bull; Лабораторный контроль РК
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
+                        Спортивное питание без компромиссов.
+                    </h1>
+
+                    <p class="text-sm sm:text-base text-gray-400 max-w-xl leading-relaxed">
+                        Официальный магазин PEAK LAB в Казахстане.
+                        Протеиновые изоляты, креатин Creapure®, взрывные предтрены и низкоуглеводные гейнеры с честной
+                        концентрацией действующего вещества.
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-3 pt-2">
+                        <a href="#catalog"
+                            class="px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-wider bg-white text-black hover:bg-accent transition-all">
+                            Смотреть витрину товаров
+                        </a>
+                        <a href="#lead-magnet"
+                            class="px-5 py-3 rounded-lg text-xs font-semibold text-gray-300 bg-dark-850 hover:bg-dark-800 border border-dark-border transition-all">
+                            🎁 Гайд по спортпиту + 3 000 ₸
+                        </a>
+                    </div>
+
+                    <!-- Инфо-метки -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-dark-border/80 max-w-lg">
+                        <div>
+                            <div class="text-lg font-bold text-white tracking-tight">100% RAW</div>
+                            <div class="text-[11px] text-gray-500">Импортное сырье</div>
+                        </div>
+                        <div>
+                            <div class="text-lg font-bold text-white tracking-tight">0 ₸</div>
+                            <div class="text-[11px] text-gray-500">Доставка от 25 000 ₸</div>
+                        </div>
+                        <div>
+                            <div class="text-lg font-bold text-white tracking-tight">Kaspi 0-0-3</div>
+                            <div class="text-[11px] text-gray-500">Рассрочка без %</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Главная баночка продукта в Hero (Только герметичная упаковка) -->
+                <div class="lg:col-span-5 relative flex justify-center">
+                    <div
+                        class="relative w-full max-w-sm rounded-2xl bg-dark-900 border border-dark-border p-5 shadow-2xl">
+                        <div class="flex items-center justify-between mb-3">
+                            <span
+                                class="bg-accent/15 border border-accent/30 text-accent text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                                ТОП ПРОДАЖ В РК
+                            </span>
+                            <span class="text-xs text-gray-400 font-mono">Флагман 2026</span>
+                        </div>
+
+                        <!-- 3D Рендер закрытой банки ISO-PEAK -->
+                        <div class="relative rounded-xl bg-dark-950 p-6 flex items-center justify-center min-h-[240px]">
+                            <svg viewBox="0 0 200 240" class="w-48 h-56 object-contain drop-shadow-2xl">
+                                <defs>
+                                    <linearGradient id="heroBodyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#181b22" />
+                                        <stop offset="18%" stop-color="#2d3443" />
+                                        <stop offset="45%" stop-color="#181b22" />
+                                        <stop offset="85%" stop-color="#0e1015" />
+                                        <stop offset="100%" stop-color="#08090d" />
+                                    </linearGradient>
+                                    <linearGradient id="heroLidGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#222630" />
+                                        <stop offset="30%" stop-color="#3d4557" />
+                                        <stop offset="70%" stop-color="#1c1f28" />
+                                        <stop offset="100%" stop-color="#0d0e12" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Тень банки -->
+                                <ellipse cx="100" cy="226" rx="66" ry="9" fill="rgba(0,0,0,0.75)" />
+                                <!-- Крышка банки (Lid) -->
+                                <rect x="52" y="18" width="96" height="22" rx="3" fill="url(#heroLidGrad)" />
+                                <line x1="62" y1="18" x2="62" y2="40" stroke="#151820" stroke-width="2" />
+                                <line x1="74" y1="18" x2="74" y2="40" stroke="#151820" stroke-width="2" />
+                                <line x1="86" y1="18" x2="86" y2="40" stroke="#151820" stroke-width="2" />
+                                <line x1="98" y1="18" x2="98" y2="40" stroke="#151820" stroke-width="2" />
+                                <line x1="110" y1="18" x2="110" y2="40" stroke="#151820" stroke-width="2" />
+                                <line x1="122" y1="18" x2="122" y2="40" stroke="#151820" stroke-width="2" />
+                                <line x1="134" y1="18" x2="134" y2="40" stroke="#151820" stroke-width="2" />
+                                <!-- Горлышко -->
+                                <rect x="58" y="38" width="84" height="8" fill="#111318" />
+                                <!-- Тело банки (Tub Body) -->
+                                <rect x="34" y="44" width="132" height="174" rx="14" fill="url(#heroBodyGrad)"
+                                    stroke="#262b38" stroke-width="1.5" />
+                                <!-- Фирменная этикетка (Label) -->
+                                <rect x="36" y="68" width="128" height="126" fill="#0b0d11" stroke="#1f2430"
+                                    stroke-width="1" />
+                                <rect x="36" y="68" width="4" height="126" fill="#c2f03c" />
+                                <!-- Текст этикетки -->
+                                <text x="46" y="84" font-size="7" font-family="monospace" font-weight="bold"
+                                    fill="#c2f03c" letter-spacing="1">PEAK LAB // PRECISION</text>
+                                <text x="46" y="103" font-size="13" font-family="sans-serif" font-weight="900"
+                                    fill="#ffffff">ISO-PEAK 90</text>
+                                <text x="46" y="115" font-size="6.5" font-family="sans-serif" font-weight="bold"
+                                    fill="#9ca3af">HYDRO WHEY ISOLATE</text>
+                                <line x1="46" y1="122" x2="152" y2="122" stroke="#262b38" stroke-width="1" />
+                                <text x="46" y="138" font-size="11" font-family="sans-serif" font-weight="900"
+                                    fill="#c2f03c">28G PROTEIN</text>
+                                <text x="46" y="150" font-size="6.5" font-family="monospace" fill="#e5e7eb">0G SUGAR
+                                    &bull; DIGEZYME®</text>
+                                <rect x="46" y="162" width="106" height="18" rx="3" fill="#161922" />
+                                <text x="52" y="174" font-size="7.5" font-family="monospace" font-weight="bold"
+                                    fill="#ffffff">NET WT: 1000G (33 SERV)</text>
+                            </svg>
+                        </div>
+
+                        <div class="pt-4 space-y-2">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-sm font-bold text-white">ISO-PEAK Hydro Whey Isolate 90%</h3>
+                                <span class="text-sm font-bold text-accent">19 990 ₸</span>
+                            </div>
+                            <div class="text-[11px] text-gray-400 flex items-center justify-between">
+                                <span>1000 г &bull; 33 порции &bull; Без лактозы</span>
+                                <span class="text-emerald-400 font-medium">В наличии в Алматы</span>
+                            </div>
+                            <button onclick="addToCart(1)"
+                                class="w-full mt-2 py-2.5 rounded-lg bg-white hover:bg-accent text-black text-xs font-bold uppercase tracking-wider transition-all">
+                                Добавить в корзину &bull; 19 990 ₸
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- КАТЕГОРИИ СПОРТПИТА -->
+    <section class="py-12 bg-dark-900 border-b border-dark-border" id="categories">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h2 class="text-xl font-bold text-white tracking-tight">Линейки спортивного питания</h2>
+                    <p class="text-xs text-gray-400 mt-0.5">Выберите категорию под вашу тренировочную цель</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                <button onclick="filterCategory('protein')"
+                    class="p-4 rounded-xl bg-dark-950 border border-dark-border hover:border-gray-500 text-left transition-all group">
+                    <div class="text-2xl mb-2">🥛</div>
+                    <div class="text-xs font-bold text-white group-hover:text-accent">Протеины</div>
+                    <div class="text-[10px] text-gray-500 mt-0.5">Изолят, сыворотка</div>
+                </button>
+                <button onclick="filterCategory('creatine')"
+                    class="p-4 rounded-xl bg-dark-950 border border-dark-border hover:border-gray-500 text-left transition-all group">
+                    <div class="text-2xl mb-2">⚡</div>
+                    <div class="text-xs font-bold text-white group-hover:text-accent">Креатин</div>
+                    <div class="text-[10px] text-gray-500 mt-0.5">Сила и выносливость</div>
+                </button>
+                <button onclick="filterCategory('gainer')"
+                    class="p-4 rounded-xl bg-dark-950 border border-dark-border hover:border-gray-500 text-left transition-all group">
+                    <div class="text-2xl mb-2">📦</div>
+                    <div class="text-xs font-bold text-white group-hover:text-accent">Гейнеры</div>
+                    <div class="text-[10px] text-gray-500 mt-0.5">Набор чистой массы</div>
+                </button>
+                <button onclick="filterCategory('preworkout')"
+                    class="p-4 rounded-xl bg-dark-950 border border-dark-border hover:border-gray-500 text-left transition-all group">
+                    <div class="text-2xl mb-2">🔥</div>
+                    <div class="text-xs font-bold text-white group-hover:text-accent">Предтреники</div>
+                    <div class="text-[10px] text-gray-500 mt-0.5">Фокус и памп</div>
+                </button>
+                <button onclick="filterCategory('bcaa')"
+                    class="p-4 rounded-xl bg-dark-950 border border-dark-border hover:border-gray-500 text-left transition-all group">
+                    <div class="text-2xl mb-2">🧬</div>
+                    <div class="text-xs font-bold text-white group-hover:text-accent">BCAA & EAA</div>
+                    <div class="text-[10px] text-gray-500 mt-0.5">Восстановление мышц</div>
+                </button>
+                <button onclick="filterCategory('vitamins')"
+                    class="p-4 rounded-xl bg-dark-950 border border-dark-border hover:border-gray-500 text-left transition-all group">
+                    <div class="text-2xl mb-2">🌿</div>
+                    <div class="text-xs font-bold text-white group-hover:text-accent">Витамины</div>
+                    <div class="text-[10px] text-gray-500 mt-0.5">Омега-3, суставы</div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ВИТРИНА / КАТАЛОГ С ФОТОГРАФИЯМИ И ЦЕНАМИ В ТЕНГЕ -->
+    <section class="py-14 md:py-20 bg-dark-950" id="catalog">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+                <div>
+                    <h2 class="text-2xl font-bold text-white tracking-tight">Витрина товаров PEAK LAB</h2>
+                    <p class="text-xs text-gray-400 mt-1">Официальные поставки в Казахстан с сертификатами качества</p>
+                </div>
+
+                <!-- Фильтр табов -->
+                <div
+                    class="flex flex-wrap items-center gap-1.5 p-1 rounded-lg bg-dark-900 border border-dark-border text-xs">
+                    <button onclick="filterCategory('all')" id="tab-all"
+                        class="cat-tab px-3 py-1.5 rounded-md text-xs font-medium text-black bg-white transition-all">Все
+                        товары</button>
+                    <button onclick="filterCategory('protein')" id="tab-protein"
+                        class="cat-tab px-3 py-1.5 rounded-md text-xs font-medium text-gray-400 hover:text-white transition-all">Протеин</button>
+                    <button onclick="filterCategory('creatine')" id="tab-creatine"
+                        class="cat-tab px-3 py-1.5 rounded-md text-xs font-medium text-gray-400 hover:text-white transition-all">Креатин</button>
+                    <button onclick="filterCategory('gainer')" id="tab-gainer"
+                        class="cat-tab px-3 py-1.5 rounded-md text-xs font-medium text-gray-400 hover:text-white transition-all">Гейнер</button>
+                    <button onclick="filterCategory('preworkout')" id="tab-preworkout"
+                        class="cat-tab px-3 py-1.5 rounded-md text-xs font-medium text-gray-400 hover:text-white transition-all">Предтрен</button>
+                    <button onclick="filterCategory('bcaa')" id="tab-bcaa"
+                        class="cat-tab px-3 py-1.5 rounded-md text-xs font-medium text-gray-400 hover:text-white transition-all">BCAA/EAA</button>
+                    <button onclick="filterCategory('vitamins')" id="tab-vitamins"
+                        class="cat-tab px-3 py-1.5 rounded-md text-xs font-medium text-gray-400 hover:text-white transition-all">Витамины</button>
+                </div>
+            </div>
+
+            <!-- Сетка товаров (Product Grid) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="productsGrid">
+                <div class="bg-dark-900 rounded-2xl border border-dark-border p-4 sm:p-5 flex flex-col justify-between hover:border-gray-600 transition-all group product-card"
+                    data-category="protein">
+                    <div>
+                        <div
+                            class="relative overflow-hidden rounded-xl bg-dark-950 p-3 mb-4 flex items-center justify-center min-h-[190px]">
+                            <span
+                                class="absolute top-2 left-2 z-10 text-[10px] font-bold bg-dark-850/90 backdrop-blur-sm border border-dark-border text-gray-200 px-2.5 py-0.5 rounded">
+                                ХИТ ПРОДАЖ
+                            </span>
+                            <svg viewBox="0 0 200 240"
+                                class="w-full h-44 object-contain transition-transform duration-500 group-hover:scale-105 select-none drop-shadow-xl">
+                                <defs>
+                                    <linearGradient id="static-body-1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#161920" />
+                                        <stop offset="16%" stop-color="#2a313e" />
+                                        <stop offset="42%" stop-color="#161920" />
+                                        <stop offset="85%" stop-color="#0c0e12" />
+                                        <stop offset="100%" stop-color="#07080a" />
+                                    </linearGradient>
+                                    <linearGradient id="static-lid-1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#20242e" />
+                                        <stop offset="30%" stop-color="#384050" />
+                                        <stop offset="70%" stop-color="#191c24" />
+                                        <stop offset="100%" stop-color="#0b0c10" />
+                                    </linearGradient>
+                                </defs>
+                                <ellipse cx="100" cy="226" rx="66" ry="9" fill="rgba(0,0,0,0.7)" />
+                                <rect x="54" y="20" width="92" height="20" rx="3" fill="url(#static-lid-1)" />
+                                <line x1="64" y1="20" x2="64" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="76" y1="20" x2="76" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="88" y1="20" x2="88" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="100" y1="20" x2="100" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="112" y1="20" x2="112" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="124" y1="20" x2="124" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="136" y1="20" x2="136" y2="40" stroke="#12151b" stroke-width="2" />
+                                <rect x="60" y="38" width="80" height="8" fill="#0f1116" />
+                                <rect x="36" y="44" width="128" height="172" rx="14" fill="url(#static-body-1)"
+                                    stroke="#232733" stroke-width="1.5" />
+                                <rect x="38" y="68" width="124" height="124" fill="#0b0d11" stroke="#1e222c"
+                                    stroke-width="1" />
+                                <rect x="38" y="68" width="4" height="124" fill="#c2f03c" />
+                                <text x="48" y="84" font-size="7" font-family="monospace" font-weight="bold"
+                                    fill="#c2f03c" letter-spacing="1">PEAK LAB // KZ</text>
+                                <text x="48" y="103" font-size="12" font-family="sans-serif" font-weight="900"
+                                    fill="#ffffff">ISO-PEAK 90</text>
+                                <text x="48" y="115" font-size="6.5" font-family="sans-serif" font-weight="bold"
+                                    fill="#9ca3af">ХИТ ПРОДАЖ</text>
+                                <line x1="48" y1="122" x2="152" y2="122" stroke="#232733" stroke-width="0.8" />
+                                <text x="48" y="139" font-size="10.5" font-family="sans-serif" font-weight="900"
+                                    fill="#c2f03c">28G PROTEIN</text>
+                                <text x="48" y="150" font-size="6.5" font-family="monospace" fill="#d1d5db">0G SUGAR •
+                                    DIGEZYME®</text>
+                                <rect x="48" y="162" width="104" height="18" rx="3" fill="#13161f" />
+                                <text x="54" y="174" font-size="7" font-family="monospace" font-weight="bold"
+                                    fill="#ffffff">NET WT: 1000G / 33 SERV</text>
+                            </svg>
+                        </div>
+
+                        <div class="text-[11px] text-gray-400 mb-1 flex items-center justify-between">
+                            <span class="font-mono text-gray-300">1000 г (33 порции)</span>
+                            <span class="text-gray-500 truncate max-w-[140px]">Шоколадный фадж</span>
+                        </div>
+
+                        <h4
+                            class="text-sm font-bold text-white group-hover:text-accent transition-colors leading-snug mb-1.5">
+                            ISO-PEAK Whey Isolate 90%
+                        </h4>
+
+                        <p class="text-xs text-gray-400 leading-relaxed mb-4 line-clamp-2">
+                            Чистейший гидролизованный изолят. 28г белка на порцию, 0г сахара, без лактозы.
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="pt-3 border-t border-dark-border flex items-baseline gap-2 mb-3">
+                            <span class="text-base font-bold text-white">19 990 ₸</span>
+                            <span class="text-xs text-gray-500 line-through">24 990 ₸</span>
+                        </div>
+
+                        <button onclick="addToCart(1)"
+                            class="w-full py-2.5 rounded-lg bg-dark-800 hover:bg-white hover:text-black border border-dark-border text-xs font-semibold text-white transition-all flex items-center justify-center gap-1.5">
+                            <span>В корзину</span>
+                            <span>&bull;</span>
+                            <span>19 990 ₸</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-dark-900 rounded-2xl border border-dark-border p-4 sm:p-5 flex flex-col justify-between hover:border-gray-600 transition-all group product-card"
+                    data-category="creatine">
+                    <div>
+                        <div
+                            class="relative overflow-hidden rounded-xl bg-dark-950 p-3 mb-4 flex items-center justify-center min-h-[190px]">
+                            <span
+                                class="absolute top-2 left-2 z-10 text-[10px] font-bold bg-dark-850/90 backdrop-blur-sm border border-dark-border text-gray-200 px-2.5 py-0.5 rounded">
+                                100% ЧИСТОТА
+                            </span>
+                            <svg viewBox="0 0 200 240"
+                                class="w-full h-44 object-contain transition-transform duration-500 group-hover:scale-105 select-none drop-shadow-xl">
+                                <defs>
+                                    <linearGradient id="static-body-2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#161920" />
+                                        <stop offset="16%" stop-color="#2a313e" />
+                                        <stop offset="42%" stop-color="#161920" />
+                                        <stop offset="85%" stop-color="#0c0e12" />
+                                        <stop offset="100%" stop-color="#07080a" />
+                                    </linearGradient>
+                                    <linearGradient id="static-lid-2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#20242e" />
+                                        <stop offset="30%" stop-color="#384050" />
+                                        <stop offset="70%" stop-color="#191c24" />
+                                        <stop offset="100%" stop-color="#0b0c10" />
+                                    </linearGradient>
+                                </defs>
+                                <ellipse cx="100" cy="226" rx="66" ry="9" fill="rgba(0,0,0,0.7)" />
+                                <rect x="54" y="20" width="92" height="20" rx="3" fill="url(#static-lid-2)" />
+                                <line x1="64" y1="20" x2="64" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="76" y1="20" x2="76" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="88" y1="20" x2="88" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="100" y1="20" x2="100" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="112" y1="20" x2="112" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="124" y1="20" x2="124" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="136" y1="20" x2="136" y2="40" stroke="#12151b" stroke-width="2" />
+                                <rect x="60" y="38" width="80" height="8" fill="#0f1116" />
+                                <rect x="36" y="44" width="128" height="172" rx="14" fill="url(#static-body-2)"
+                                    stroke="#232733" stroke-width="1.5" />
+                                <rect x="38" y="68" width="124" height="124" fill="#0b0d11" stroke="#1e222c"
+                                    stroke-width="1" />
+                                <rect x="38" y="68" width="4" height="124" fill="#38bdf8" />
+                                <text x="48" y="84" font-size="7" font-family="monospace" font-weight="bold"
+                                    fill="#38bdf8" letter-spacing="1">PEAK LAB // KZ</text>
+                                <text x="48" y="103" font-size="12" font-family="sans-serif" font-weight="900"
+                                    fill="#ffffff">CREA-PEAK</text>
+                                <text x="48" y="115" font-size="6.5" font-family="sans-serif" font-weight="bold"
+                                    fill="#9ca3af">100% ЧИСТОТА</text>
+                                <line x1="48" y1="122" x2="152" y2="122" stroke="#232733" stroke-width="0.8" />
+                                <text x="48" y="139" font-size="10.5" font-family="sans-serif" font-weight="900"
+                                    fill="#38bdf8">CREAPURE®</text>
+                                <text x="48" y="150" font-size="6.5" font-family="monospace" fill="#d1d5db">MICRONIZED
+                                    MONOHYDRATE</text>
+                                <rect x="48" y="162" width="104" height="18" rx="3" fill="#13161f" />
+                                <text x="54" y="174" font-size="7" font-family="monospace" font-weight="bold"
+                                    fill="#ffffff">NET WT: 300G / 60 SERV</text>
+                            </svg>
+                        </div>
+
+                        <div class="text-[11px] text-gray-400 mb-1 flex items-center justify-between">
+                            <span class="font-mono text-gray-300">300 г (60 порций)</span>
+                            <span class="text-gray-500 truncate max-w-[140px]">Pure (Без вкуса)</span>
+                        </div>
+
+                        <h4
+                            class="text-sm font-bold text-white group-hover:text-accent transition-colors leading-snug mb-1.5">
+                            CREA-PEAK Creapure® Monohydrate
+                        </h4>
+
+                        <p class="text-xs text-gray-400 leading-relaxed mb-4 line-clamp-2">
+                            Немецкий микронизированный моногидрат креатина Creapure®. Максимальный прирост силы.
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="pt-3 border-t border-dark-border flex items-baseline gap-2 mb-3">
+                            <span class="text-base font-bold text-white">8 990 ₸</span>
+                            <span class="text-xs text-gray-500 line-through">11 490 ₸</span>
+                        </div>
+
+                        <button onclick="addToCart(2)"
+                            class="w-full py-2.5 rounded-lg bg-dark-800 hover:bg-white hover:text-black border border-dark-border text-xs font-semibold text-white transition-all flex items-center justify-center gap-1.5">
+                            <span>В корзину</span>
+                            <span>&bull;</span>
+                            <span>8 990 ₸</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-dark-900 rounded-2xl border border-dark-border p-4 sm:p-5 flex flex-col justify-between hover:border-gray-600 transition-all group product-card"
+                    data-category="gainer">
+                    <div>
+                        <div
+                            class="relative overflow-hidden rounded-xl bg-dark-950 p-3 mb-4 flex items-center justify-center min-h-[190px]">
+                            <span
+                                class="absolute top-2 left-2 z-10 text-[10px] font-bold bg-dark-850/90 backdrop-blur-sm border border-dark-border text-gray-200 px-2.5 py-0.5 rounded">
+                                ЧИСТАЯ МАССА
+                            </span>
+                            <svg viewBox="0 0 200 240"
+                                class="w-full h-44 object-contain transition-transform duration-500 group-hover:scale-105 select-none drop-shadow-xl">
+                                <defs>
+                                    <linearGradient id="static-body-3" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#161920" />
+                                        <stop offset="16%" stop-color="#2a313e" />
+                                        <stop offset="42%" stop-color="#161920" />
+                                        <stop offset="85%" stop-color="#0c0e12" />
+                                        <stop offset="100%" stop-color="#07080a" />
+                                    </linearGradient>
+                                    <linearGradient id="static-lid-3" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#20242e" />
+                                        <stop offset="30%" stop-color="#384050" />
+                                        <stop offset="70%" stop-color="#191c24" />
+                                        <stop offset="100%" stop-color="#0b0c10" />
+                                    </linearGradient>
+                                </defs>
+                                <ellipse cx="100" cy="226" rx="66" ry="9" fill="rgba(0,0,0,0.7)" />
+                                <rect x="54" y="20" width="92" height="20" rx="3" fill="url(#static-lid-3)" />
+                                <line x1="64" y1="20" x2="64" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="76" y1="20" x2="76" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="88" y1="20" x2="88" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="100" y1="20" x2="100" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="112" y1="20" x2="112" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="124" y1="20" x2="124" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="136" y1="20" x2="136" y2="40" stroke="#12151b" stroke-width="2" />
+                                <rect x="60" y="38" width="80" height="8" fill="#0f1116" />
+                                <rect x="36" y="44" width="128" height="172" rx="14" fill="url(#static-body-3)"
+                                    stroke="#232733" stroke-width="1.5" />
+                                <rect x="38" y="68" width="124" height="124" fill="#0b0d11" stroke="#1e222c"
+                                    stroke-width="1" />
+                                <rect x="38" y="68" width="4" height="124" fill="#f59e0b" />
+                                <text x="48" y="84" font-size="7" font-family="monospace" font-weight="bold"
+                                    fill="#f59e0b" letter-spacing="1">PEAK LAB // KZ</text>
+                                <text x="48" y="103" font-size="12" font-family="sans-serif" font-weight="900"
+                                    fill="#ffffff">MASS-PEAK</text>
+                                <text x="48" y="115" font-size="6.5" font-family="sans-serif" font-weight="bold"
+                                    fill="#9ca3af">ЧИСТАЯ МАССА</text>
+                                <line x1="48" y1="122" x2="152" y2="122" stroke="#232733" stroke-width="0.8" />
+                                <text x="48" y="139" font-size="10.5" font-family="sans-serif" font-weight="900"
+                                    fill="#f59e0b">45G PRO • 650 KCAL</text>
+                                <text x="48" y="150" font-size="6.5" font-family="monospace" fill="#d1d5db">COMPLEX OATS
+                                    MATRIX</text>
+                                <rect x="48" y="162" width="104" height="18" rx="3" fill="#13161f" />
+                                <text x="54" y="174" font-size="7" font-family="monospace" font-weight="bold"
+                                    fill="#ffffff">NET WT: 2500G / 25 SERV</text>
+                            </svg>
+                        </div>
+
+                        <div class="text-[11px] text-gray-400 mb-1 flex items-center justify-between">
+                            <span class="font-mono text-gray-300">2500 г (25 порций)</span>
+                            <span class="text-gray-500 truncate max-w-[140px]">Ванильное печенье</span>
+                        </div>
+
+                        <h4
+                            class="text-sm font-bold text-white group-hover:text-accent transition-colors leading-snug mb-1.5">
+                            MASS-PEAK Clean Gainer Complex
+                        </h4>
+
+                        <p class="text-xs text-gray-400 leading-relaxed mb-4 line-clamp-2">
+                            Гейнер на сложных овсяных углеводах без сахара и мальтодекстрина. 45г белка и 650 ккал.
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="pt-3 border-t border-dark-border flex items-baseline gap-2 mb-3">
+                            <span class="text-base font-bold text-white">21 490 ₸</span>
+                            <span class="text-xs text-gray-500 line-through">26 990 ₸</span>
+                        </div>
+
+                        <button onclick="addToCart(3)"
+                            class="w-full py-2.5 rounded-lg bg-dark-800 hover:bg-white hover:text-black border border-dark-border text-xs font-semibold text-white transition-all flex items-center justify-center gap-1.5">
+                            <span>В корзину</span>
+                            <span>&bull;</span>
+                            <span>21 490 ₸</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-dark-900 rounded-2xl border border-dark-border p-4 sm:p-5 flex flex-col justify-between hover:border-gray-600 transition-all group product-card"
+                    data-category="preworkout">
+                    <div>
+                        <div
+                            class="relative overflow-hidden rounded-xl bg-dark-950 p-3 mb-4 flex items-center justify-center min-h-[190px]">
+                            <span
+                                class="absolute top-2 left-2 z-10 text-[10px] font-bold bg-dark-850/90 backdrop-blur-sm border border-dark-border text-gray-200 px-2.5 py-0.5 rounded">
+                                МОЩНЫЙ ПАМП
+                            </span>
+                            <svg viewBox="0 0 200 240"
+                                class="w-full h-44 object-contain transition-transform duration-500 group-hover:scale-105 select-none drop-shadow-xl">
+                                <defs>
+                                    <linearGradient id="static-body-4" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#161920" />
+                                        <stop offset="16%" stop-color="#2a313e" />
+                                        <stop offset="42%" stop-color="#161920" />
+                                        <stop offset="85%" stop-color="#0c0e12" />
+                                        <stop offset="100%" stop-color="#07080a" />
+                                    </linearGradient>
+                                    <linearGradient id="static-lid-4" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#20242e" />
+                                        <stop offset="30%" stop-color="#384050" />
+                                        <stop offset="70%" stop-color="#191c24" />
+                                        <stop offset="100%" stop-color="#0b0c10" />
+                                    </linearGradient>
+                                </defs>
+                                <ellipse cx="100" cy="226" rx="66" ry="9" fill="rgba(0,0,0,0.7)" />
+                                <rect x="54" y="20" width="92" height="20" rx="3" fill="url(#static-lid-4)" />
+                                <line x1="64" y1="20" x2="64" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="76" y1="20" x2="76" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="88" y1="20" x2="88" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="100" y1="20" x2="100" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="112" y1="20" x2="112" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="124" y1="20" x2="124" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="136" y1="20" x2="136" y2="40" stroke="#12151b" stroke-width="2" />
+                                <rect x="60" y="38" width="80" height="8" fill="#0f1116" />
+                                <rect x="36" y="44" width="128" height="172" rx="14" fill="url(#static-body-4)"
+                                    stroke="#232733" stroke-width="1.5" />
+                                <rect x="38" y="68" width="124" height="124" fill="#0b0d11" stroke="#1e222c"
+                                    stroke-width="1" />
+                                <rect x="38" y="68" width="4" height="124" fill="#f43f5e" />
+                                <text x="48" y="84" font-size="7" font-family="monospace" font-weight="bold"
+                                    fill="#f43f5e" letter-spacing="1">PEAK LAB // KZ</text>
+                                <text x="48" y="103" font-size="12" font-family="sans-serif" font-weight="900"
+                                    fill="#ffffff">PRE-IGNITE</text>
+                                <text x="48" y="115" font-size="6.5" font-family="sans-serif" font-weight="bold"
+                                    fill="#9ca3af">МОЩНЫЙ ПАМП</text>
+                                <line x1="48" y1="122" x2="152" y2="122" stroke="#232733" stroke-width="0.8" />
+                                <text x="48" y="139" font-size="10.5" font-family="sans-serif" font-weight="900"
+                                    fill="#f43f5e">PUMP & ENERGY</text>
+                                <text x="48" y="150" font-size="6.5" font-family="monospace" fill="#d1d5db">6G
+                                    CITRULLINE • BETA-ALANINE</text>
+                                <rect x="48" y="162" width="104" height="18" rx="3" fill="#13161f" />
+                                <text x="54" y="174" font-size="7" font-family="monospace" font-weight="bold"
+                                    fill="#ffffff">NET WT: 360G / 30 SERV</text>
+                            </svg>
+                        </div>
+
+                        <div class="text-[11px] text-gray-400 mb-1 flex items-center justify-between">
+                            <span class="font-mono text-gray-300">360 г (30 порций)</span>
+                            <span class="text-gray-500 truncate max-w-[140px]">Кислое яблоко</span>
+                        </div>
+
+                        <h4
+                            class="text-sm font-bold text-white group-hover:text-accent transition-colors leading-snug mb-1.5">
+                            PRE-IGNITE High-Focus Matrix
+                        </h4>
+
+                        <p class="text-xs text-gray-400 leading-relaxed mb-4 line-clamp-2">
+                            Цитруллин малат 6г, бета-аланин 3.2г, альфа-GPC и кофеин. Взрывная энергия без тремора.
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="pt-3 border-t border-dark-border flex items-baseline gap-2 mb-3">
+                            <span class="text-base font-bold text-white">14 990 ₸</span>
+                            <span class="text-xs text-gray-500 line-through">18 990 ₸</span>
+                        </div>
+
+                        <button onclick="addToCart(4)"
+                            class="w-full py-2.5 rounded-lg bg-dark-800 hover:bg-white hover:text-black border border-dark-border text-xs font-semibold text-white transition-all flex items-center justify-center gap-1.5">
+                            <span>В корзину</span>
+                            <span>&bull;</span>
+                            <span>14 990 ₸</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-dark-900 rounded-2xl border border-dark-border p-4 sm:p-5 flex flex-col justify-between hover:border-gray-600 transition-all group product-card"
+                    data-category="bcaa">
+                    <div>
+                        <div
+                            class="relative overflow-hidden rounded-xl bg-dark-950 p-3 mb-4 flex items-center justify-center min-h-[190px]">
+                            <span
+                                class="absolute top-2 left-2 z-10 text-[10px] font-bold bg-dark-850/90 backdrop-blur-sm border border-dark-border text-gray-200 px-2.5 py-0.5 rounded">
+                                РЕКОМПОЗИЦИЯ
+                            </span>
+                            <svg viewBox="0 0 200 240"
+                                class="w-full h-44 object-contain transition-transform duration-500 group-hover:scale-105 select-none drop-shadow-xl">
+                                <defs>
+                                    <linearGradient id="static-body-5" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#161920" />
+                                        <stop offset="16%" stop-color="#2a313e" />
+                                        <stop offset="42%" stop-color="#161920" />
+                                        <stop offset="85%" stop-color="#0c0e12" />
+                                        <stop offset="100%" stop-color="#07080a" />
+                                    </linearGradient>
+                                    <linearGradient id="static-lid-5" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#20242e" />
+                                        <stop offset="30%" stop-color="#384050" />
+                                        <stop offset="70%" stop-color="#191c24" />
+                                        <stop offset="100%" stop-color="#0b0c10" />
+                                    </linearGradient>
+                                </defs>
+                                <ellipse cx="100" cy="226" rx="66" ry="9" fill="rgba(0,0,0,0.7)" />
+                                <rect x="54" y="20" width="92" height="20" rx="3" fill="url(#static-lid-5)" />
+                                <line x1="64" y1="20" x2="64" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="76" y1="20" x2="76" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="88" y1="20" x2="88" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="100" y1="20" x2="100" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="112" y1="20" x2="112" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="124" y1="20" x2="124" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="136" y1="20" x2="136" y2="40" stroke="#12151b" stroke-width="2" />
+                                <rect x="60" y="38" width="80" height="8" fill="#0f1116" />
+                                <rect x="36" y="44" width="128" height="172" rx="14" fill="url(#static-body-5)"
+                                    stroke="#232733" stroke-width="1.5" />
+                                <rect x="38" y="68" width="124" height="124" fill="#0b0d11" stroke="#1e222c"
+                                    stroke-width="1" />
+                                <rect x="38" y="68" width="4" height="124" fill="#a855f7" />
+                                <text x="48" y="84" font-size="7" font-family="monospace" font-weight="bold"
+                                    fill="#a855f7" letter-spacing="1">PEAK LAB // KZ</text>
+                                <text x="48" y="103" font-size="12" font-family="sans-serif" font-weight="900"
+                                    fill="#ffffff">HYDRO-EAA</text>
+                                <text x="48" y="115" font-size="6.5" font-family="sans-serif" font-weight="bold"
+                                    fill="#9ca3af">РЕКОМПОЗИЦИЯ</text>
+                                <line x1="48" y1="122" x2="152" y2="122" stroke="#232733" stroke-width="0.8" />
+                                <text x="48" y="139" font-size="10.5" font-family="sans-serif" font-weight="900"
+                                    fill="#a855f7">9 ESSENTIAL AMINOS</text>
+                                <text x="48" y="150" font-size="6.5" font-family="monospace" fill="#d1d5db">COCONUT
+                                    WATER + ELECTROLYTES</text>
+                                <rect x="48" y="162" width="104" height="18" rx="3" fill="#13161f" />
+                                <text x="54" y="174" font-size="7" font-family="monospace" font-weight="bold"
+                                    fill="#ffffff">NET WT: 400G / 40 SERV</text>
+                            </svg>
+                        </div>
+
+                        <div class="text-[11px] text-gray-400 mb-1 flex items-center justify-between">
+                            <span class="font-mono text-gray-300">400 г (40 порций)</span>
+                            <span class="text-gray-500 truncate max-w-[140px]">Лесные ягоды</span>
+                        </div>
+
+                        <h4
+                            class="text-sm font-bold text-white group-hover:text-accent transition-colors leading-snug mb-1.5">
+                            HYDRO-EAA + Electrolyte Balance
+                        </h4>
+
+                        <p class="text-xs text-gray-400 leading-relaxed mb-4 line-clamp-2">
+                            Полный комплекс из 9 незаменимых аминокислот + кокосовая вода и электролиты.
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="pt-3 border-t border-dark-border flex items-baseline gap-2 mb-3">
+                            <span class="text-base font-bold text-white">12 490 ₸</span>
+                            <span class="text-xs text-gray-500 line-through">15 990 ₸</span>
+                        </div>
+
+                        <button onclick="addToCart(5)"
+                            class="w-full py-2.5 rounded-lg bg-dark-800 hover:bg-white hover:text-black border border-dark-border text-xs font-semibold text-white transition-all flex items-center justify-center gap-1.5">
+                            <span>В корзину</span>
+                            <span>&bull;</span>
+                            <span>12 490 ₸</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-dark-900 rounded-2xl border border-dark-border p-4 sm:p-5 flex flex-col justify-between hover:border-gray-600 transition-all group product-card"
+                    data-category="vitamins">
+                    <div>
+                        <div
+                            class="relative overflow-hidden rounded-xl bg-dark-950 p-3 mb-4 flex items-center justify-center min-h-[190px]">
+                            <span
+                                class="absolute top-2 left-2 z-10 text-[10px] font-bold bg-dark-850/90 backdrop-blur-sm border border-dark-border text-gray-200 px-2.5 py-0.5 rounded">
+                                ЗДОРОВЬЕ
+                            </span>
+                            <svg viewBox="0 0 200 240"
+                                class="w-full h-44 object-contain transition-transform duration-500 group-hover:scale-105 select-none drop-shadow-xl">
+                                <defs>
+                                    <linearGradient id="static-body-6" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#161920" />
+                                        <stop offset="16%" stop-color="#2a313e" />
+                                        <stop offset="42%" stop-color="#161920" />
+                                        <stop offset="85%" stop-color="#0c0e12" />
+                                        <stop offset="100%" stop-color="#07080a" />
+                                    </linearGradient>
+                                    <linearGradient id="static-lid-6" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#20242e" />
+                                        <stop offset="30%" stop-color="#384050" />
+                                        <stop offset="70%" stop-color="#191c24" />
+                                        <stop offset="100%" stop-color="#0b0c10" />
+                                    </linearGradient>
+                                </defs>
+                                <ellipse cx="100" cy="226" rx="66" ry="9" fill="rgba(0,0,0,0.7)" />
+                                <rect x="54" y="20" width="92" height="20" rx="3" fill="url(#static-lid-6)" />
+                                <line x1="64" y1="20" x2="64" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="76" y1="20" x2="76" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="88" y1="20" x2="88" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="100" y1="20" x2="100" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="112" y1="20" x2="112" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="124" y1="20" x2="124" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="136" y1="20" x2="136" y2="40" stroke="#12151b" stroke-width="2" />
+                                <rect x="60" y="38" width="80" height="8" fill="#0f1116" />
+                                <rect x="36" y="44" width="128" height="172" rx="14" fill="url(#static-body-6)"
+                                    stroke="#232733" stroke-width="1.5" />
+                                <rect x="38" y="68" width="124" height="124" fill="#0b0d11" stroke="#1e222c"
+                                    stroke-width="1" />
+                                <rect x="38" y="68" width="4" height="124" fill="#06b6d4" />
+                                <text x="48" y="84" font-size="7" font-family="monospace" font-weight="bold"
+                                    fill="#06b6d4" letter-spacing="1">PEAK LAB // KZ</text>
+                                <text x="48" y="103" font-size="12" font-family="sans-serif" font-weight="900"
+                                    fill="#ffffff">OMEGA-3 PRO</text>
+                                <text x="48" y="115" font-size="6.5" font-family="sans-serif" font-weight="bold"
+                                    fill="#9ca3af">ЗДОРОВЬЕ</text>
+                                <line x1="48" y1="122" x2="152" y2="122" stroke="#232733" stroke-width="0.8" />
+                                <text x="48" y="139" font-size="10.5" font-family="sans-serif" font-weight="900"
+                                    fill="#06b6d4">EPA 500 / DHA 250</text>
+                                <text x="48" y="150" font-size="6.5" font-family="monospace" fill="#d1d5db">WILD FISH
+                                    TRIGLYCERIDES</text>
+                                <rect x="48" y="162" width="104" height="18" rx="3" fill="#13161f" />
+                                <text x="54" y="174" font-size="7" font-family="monospace" font-weight="bold"
+                                    fill="#ffffff">NET WT: 90 SOFTGELS</text>
+                            </svg>
+                        </div>
+
+                        <div class="text-[11px] text-gray-400 mb-1 flex items-center justify-between">
+                            <span class="font-mono text-gray-300">90 мягких капсул</span>
+                            <span class="text-gray-500 truncate max-w-[140px]">Нейтральный</span>
+                        </div>
+
+                        <h4
+                            class="text-sm font-bold text-white group-hover:text-accent transition-colors leading-snug mb-1.5">
+                            OMEGA-3 Ultra Triglyceride 1000mg
+                        </h4>
+
+                        <p class="text-xs text-gray-400 leading-relaxed mb-4 line-clamp-2">
+                            Очищенный рыбий жир диких морских рыб в форме натуральных триглицеридов.
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="pt-3 border-t border-dark-border flex items-baseline gap-2 mb-3">
+                            <span class="text-base font-bold text-white">7 990 ₸</span>
+                            <span class="text-xs text-gray-500 line-through">9 990 ₸</span>
+                        </div>
+
+                        <button onclick="addToCart(6)"
+                            class="w-full py-2.5 rounded-lg bg-dark-800 hover:bg-white hover:text-black border border-dark-border text-xs font-semibold text-white transition-all flex items-center justify-center gap-1.5">
+                            <span>В корзину</span>
+                            <span>&bull;</span>
+                            <span>7 990 ₸</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-dark-900 rounded-2xl border border-dark-border p-4 sm:p-5 flex flex-col justify-between hover:border-gray-600 transition-all group product-card"
+                    data-category="protein">
+                    <div>
+                        <div
+                            class="relative overflow-hidden rounded-xl bg-dark-950 p-3 mb-4 flex items-center justify-center min-h-[190px]">
+                            <span
+                                class="absolute top-2 left-2 z-10 text-[10px] font-bold bg-dark-850/90 backdrop-blur-sm border border-dark-border text-gray-200 px-2.5 py-0.5 rounded">
+                                БАЗА
+                            </span>
+                            <svg viewBox="0 0 200 240"
+                                class="w-full h-44 object-contain transition-transform duration-500 group-hover:scale-105 select-none drop-shadow-xl">
+                                <defs>
+                                    <linearGradient id="static-body-7" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#161920" />
+                                        <stop offset="16%" stop-color="#2a313e" />
+                                        <stop offset="42%" stop-color="#161920" />
+                                        <stop offset="85%" stop-color="#0c0e12" />
+                                        <stop offset="100%" stop-color="#07080a" />
+                                    </linearGradient>
+                                    <linearGradient id="static-lid-7" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#20242e" />
+                                        <stop offset="30%" stop-color="#384050" />
+                                        <stop offset="70%" stop-color="#191c24" />
+                                        <stop offset="100%" stop-color="#0b0c10" />
+                                    </linearGradient>
+                                </defs>
+                                <ellipse cx="100" cy="226" rx="66" ry="9" fill="rgba(0,0,0,0.7)" />
+                                <rect x="54" y="20" width="92" height="20" rx="3" fill="url(#static-lid-7)" />
+                                <line x1="64" y1="20" x2="64" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="76" y1="20" x2="76" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="88" y1="20" x2="88" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="100" y1="20" x2="100" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="112" y1="20" x2="112" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="124" y1="20" x2="124" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="136" y1="20" x2="136" y2="40" stroke="#12151b" stroke-width="2" />
+                                <rect x="60" y="38" width="80" height="8" fill="#0f1116" />
+                                <rect x="36" y="44" width="128" height="172" rx="14" fill="url(#static-body-7)"
+                                    stroke="#232733" stroke-width="1.5" />
+                                <rect x="38" y="68" width="124" height="124" fill="#0b0d11" stroke="#1e222c"
+                                    stroke-width="1" />
+                                <rect x="38" y="68" width="4" height="124" fill="#eab308" />
+                                <text x="48" y="84" font-size="7" font-family="monospace" font-weight="bold"
+                                    fill="#eab308" letter-spacing="1">PEAK LAB // KZ</text>
+                                <text x="48" y="103" font-size="12" font-family="sans-serif" font-weight="900"
+                                    fill="#ffffff">GOLDEN WHEY</text>
+                                <text x="48" y="115" font-size="6.5" font-family="sans-serif" font-weight="bold"
+                                    fill="#9ca3af">БАЗА</text>
+                                <line x1="48" y1="122" x2="152" y2="122" stroke="#232733" stroke-width="0.8" />
+                                <text x="48" y="139" font-size="10.5" font-family="sans-serif" font-weight="900"
+                                    fill="#eab308">WPC-80 PURE RAW</text>
+                                <text x="48" y="150" font-size="6.5" font-family="monospace" fill="#d1d5db">24G PROTEIN
+                                    • CLEAN FORMULA</text>
+                                <rect x="48" y="162" width="104" height="18" rx="3" fill="#13161f" />
+                                <text x="54" y="174" font-size="7" font-family="monospace" font-weight="bold"
+                                    fill="#ffffff">NET WT: 900G / 30 SERV</text>
+                            </svg>
+                        </div>
+
+                        <div class="text-[11px] text-gray-400 mb-1 flex items-center justify-between">
+                            <span class="font-mono text-gray-300">900 г (30 порций)</span>
+                            <span class="text-gray-500 truncate max-w-[140px]">Соленая карамель</span>
+                        </div>
+
+                        <h4
+                            class="text-sm font-bold text-white group-hover:text-accent transition-colors leading-snug mb-1.5">
+                            100% GOLDEN WHEY Concentrate
+                        </h4>
+
+                        <p class="text-xs text-gray-400 leading-relaxed mb-4 line-clamp-2">
+                            Европейский сывороточный протеин 80% концентрации с натуральными вкусовыми экстрактами.
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="pt-3 border-t border-dark-border flex items-baseline gap-2 mb-3">
+                            <span class="text-base font-bold text-white">15 990 ₸</span>
+                            <span class="text-xs text-gray-500 line-through">19 990 ₸</span>
+                        </div>
+
+                        <button onclick="addToCart(7)"
+                            class="w-full py-2.5 rounded-lg bg-dark-800 hover:bg-white hover:text-black border border-dark-border text-xs font-semibold text-white transition-all flex items-center justify-center gap-1.5">
+                            <span>В корзину</span>
+                            <span>&bull;</span>
+                            <span>15 990 ₸</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-dark-900 rounded-2xl border border-dark-border p-4 sm:p-5 flex flex-col justify-between hover:border-gray-600 transition-all group product-card"
+                    data-category="vitamins">
+                    <div>
+                        <div
+                            class="relative overflow-hidden rounded-xl bg-dark-950 p-3 mb-4 flex items-center justify-center min-h-[190px]">
+                            <span
+                                class="absolute top-2 left-2 z-10 text-[10px] font-bold bg-dark-850/90 backdrop-blur-sm border border-dark-border text-gray-200 px-2.5 py-0.5 rounded">
+                                СУСТАВЫ
+                            </span>
+                            <svg viewBox="0 0 200 240"
+                                class="w-full h-44 object-contain transition-transform duration-500 group-hover:scale-105 select-none drop-shadow-xl">
+                                <defs>
+                                    <linearGradient id="static-body-8" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#161920" />
+                                        <stop offset="16%" stop-color="#2a313e" />
+                                        <stop offset="42%" stop-color="#161920" />
+                                        <stop offset="85%" stop-color="#0c0e12" />
+                                        <stop offset="100%" stop-color="#07080a" />
+                                    </linearGradient>
+                                    <linearGradient id="static-lid-8" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#20242e" />
+                                        <stop offset="30%" stop-color="#384050" />
+                                        <stop offset="70%" stop-color="#191c24" />
+                                        <stop offset="100%" stop-color="#0b0c10" />
+                                    </linearGradient>
+                                </defs>
+                                <ellipse cx="100" cy="226" rx="66" ry="9" fill="rgba(0,0,0,0.7)" />
+                                <rect x="54" y="20" width="92" height="20" rx="3" fill="url(#static-lid-8)" />
+                                <line x1="64" y1="20" x2="64" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="76" y1="20" x2="76" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="88" y1="20" x2="88" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="100" y1="20" x2="100" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="112" y1="20" x2="112" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="124" y1="20" x2="124" y2="40" stroke="#12151b" stroke-width="2" />
+                                <line x1="136" y1="20" x2="136" y2="40" stroke="#12151b" stroke-width="2" />
+                                <rect x="60" y="38" width="80" height="8" fill="#0f1116" />
+                                <rect x="36" y="44" width="128" height="172" rx="14" fill="url(#static-body-8)"
+                                    stroke="#232733" stroke-width="1.5" />
+                                <rect x="38" y="68" width="124" height="124" fill="#0b0d11" stroke="#1e222c"
+                                    stroke-width="1" />
+                                <rect x="38" y="68" width="4" height="124" fill="#10b981" />
+                                <text x="48" y="84" font-size="7" font-family="monospace" font-weight="bold"
+                                    fill="#10b981" letter-spacing="1">PEAK LAB // KZ</text>
+                                <text x="48" y="103" font-size="12" font-family="sans-serif" font-weight="900"
+                                    fill="#ffffff">JOINT-SHIELD</text>
+                                <text x="48" y="115" font-size="6.5" font-family="sans-serif" font-weight="bold"
+                                    fill="#9ca3af">СУСТАВЫ</text>
+                                <line x1="48" y1="122" x2="152" y2="122" stroke="#232733" stroke-width="0.8" />
+                                <text x="48" y="139" font-size="10.5" font-family="sans-serif" font-weight="900"
+                                    fill="#10b981">GLUCOSAMINE + MSM</text>
+                                <text x="48" y="150" font-size="6.5" font-family="monospace" fill="#d1d5db">CHONDROITIN
+                                    COMPLEX</text>
+                                <rect x="48" y="162" width="104" height="18" rx="3" fill="#13161f" />
+                                <text x="54" y="174" font-size="7" font-family="monospace" font-weight="bold"
+                                    fill="#ffffff">NET WT: 120 TABLETS</text>
+                            </svg>
+                        </div>
+
+                        <div class="text-[11px] text-gray-400 mb-1 flex items-center justify-between">
+                            <span class="font-mono text-gray-300">120 таблеток</span>
+                            <span class="text-gray-500 truncate max-w-[140px]">Без вкуса</span>
+                        </div>
+
+                        <h4
+                            class="text-sm font-bold text-white group-hover:text-accent transition-colors leading-snug mb-1.5">
+                            JOINT-SHIELD Glucosamine & Chondroitin
+                        </h4>
+
+                        <p class="text-xs text-gray-400 leading-relaxed mb-4 line-clamp-2">
+                            Защита связок и суставов при тяжелых базовых нагрузках. Глюкозамин, хондроитин + MSM.
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="pt-3 border-t border-dark-border flex items-baseline gap-2 mb-3">
+                            <span class="text-base font-bold text-white">8 490 ₸</span>
+                            <span class="text-xs text-gray-500 line-through">10 990 ₸</span>
+                        </div>
+
+                        <button onclick="addToCart(8)"
+                            class="w-full py-2.5 rounded-lg bg-dark-800 hover:bg-white hover:text-black border border-dark-border text-xs font-semibold text-white transition-all flex items-center justify-center gap-1.5">
+                            <span>В корзину</span>
+                            <span>&bull;</span>
+                            <span>8 490 ₸</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР СПОРТПИТА -->
+    <section class="py-16 bg-dark-900 border-y border-dark-border" id="calculator">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-10">
+                <span class="text-[11px] font-bold text-accent uppercase tracking-wider">Персональный подбор</span>
+                <h3 class="text-2xl font-bold text-white mt-1">Калькулятор нормы белка и добавок</h3>
+                <p class="text-xs text-gray-400 mt-1">Рассчитайте ежедневную потребность под ваши параметры без
+                    переплаты за лишние дозировки.</p>
+            </div>
+
+            <div class="bg-dark-950 rounded-2xl p-6 sm:p-8 border border-dark-border">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                    <div>
+                        <label class="block text-[11px] font-semibold text-gray-400 uppercase mb-1">Ваш вес (кг)</label>
+                        <input type="number" id="calcWeight" value="75" min="40" max="150"
+                            class="w-full bg-dark-900 border border-dark-border rounded-lg px-3.5 py-2.5 text-sm text-white font-semibold focus:border-gray-400 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-semibold text-gray-400 uppercase mb-1">Цель</label>
+                        <select id="calcGoal"
+                            class="w-full bg-dark-900 border border-dark-border rounded-lg px-3.5 py-2.5 text-xs text-white font-semibold focus:border-gray-400 focus:outline-none">
+                            <option value="recomp">Рельеф / Рекомпозиция</option>
+                            <option value="mass">Набор массы</option>
+                            <option value="cut">Похудение / Сушка</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-semibold text-gray-400 uppercase mb-1">Частота
+                            тренировок</label>
+                        <select id="calcFreq"
+                            class="w-full bg-dark-900 border border-dark-border rounded-lg px-3.5 py-2.5 text-xs text-white font-semibold focus:border-gray-400 focus:outline-none">
+                            <option value="3">3-4 раза в неделю</option>
+                            <option value="5">5+ раз (интенсивно)</option>
+                            <option value="2">1-2 раза (легкая)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div
+                    class="p-5 rounded-xl bg-dark-900 border border-dark-border flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div>
+                        <div class="text-xs text-gray-400">Рекомендуемая суточная норма белка:</div>
+                        <div class="text-2xl font-black text-white mt-0.5"><span id="resProtein"
+                                class="text-accent">150</span> г / день</div>
+                        <div class="text-[11px] text-gray-500 mt-1" id="resAdvice">
+                            Оптимальный стек: 1-2 скупа ISO-PEAK Whey (56г белка) + 5г Creapure® Monohydrate утром.
+                        </div>
+                    </div>
+                    <button onclick="recalc()"
+                        class="w-full md:w-auto px-5 py-2.5 rounded-lg bg-dark-800 hover:bg-dark-700 text-xs font-bold text-white border border-dark-border transition-colors">
+                        Рассчитать
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЛИД-МАГНИТ ДЛЯ КАЗАХСТАНА (СКИДКА В ТЕНГЕ + ГАЙД) -->
+    <section class="py-16 md:py-20 bg-dark-950" id="lead-magnet">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div
+                class="bg-gradient-to-r from-dark-900 to-dark-850 rounded-2xl p-8 sm:p-12 border border-dark-border grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+
+                <div class="md:col-span-7 space-y-4">
+                    <span
+                        class="inline-block text-[11px] font-bold text-accent uppercase tracking-wider bg-accent-muted px-2.5 py-1 rounded">
+                        Подарок для клиентов из Казахстана
+                    </span>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white leading-tight">
+                        Скачайте гайд по спортпиту + получите промокод на 3 000 ₸
+                    </h3>
+                    <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">
+                        Понятное руководство от экспертов PEAK LAB: какие добавки реально работают (с доказательной
+                        базой), а на что не стоит тратить деньги.
+                    </p>
+                    <ul class="text-xs text-gray-300 space-y-2">
+                        <li class="flex items-center gap-2">✓ Четкая схема приема: до, во время и после тренировки</li>
+                        <li class="flex items-center gap-2">✓ Как не купить подделку: проверка кодов и сертификатов</li>
+                        <li class="flex items-center gap-2">✓ Промокод на <strong>3 000 ₸</strong> на первый заказ от 15
+                            000 ₸</li>
+                    </ul>
+                </div>
+
+                <!-- Форма -->
+                <div class="md:col-span-5 bg-dark-950 rounded-xl p-6 border border-dark-border">
+                    <form id="leadForm" onsubmit="submitLead(event)" class="space-y-3.5">
+                        <div class="text-xs font-semibold text-white mb-2">Куда отправить гайд и промокод?</div>
+                        <input type="text" required placeholder="Ваше имя"
+                            class="w-full bg-dark-900 border border-dark-border rounded-lg px-3.5 py-2.5 text-xs text-white placeholder-gray-500 focus:border-gray-400 focus:outline-none">
+                        <input type="tel" required placeholder="+7 (707) 025-31-01 (WhatsApp)"
+                            class="w-full bg-dark-900 border border-dark-border rounded-lg px-3.5 py-2.5 text-xs text-white placeholder-gray-500 focus:border-gray-400 focus:outline-none">
+
+                        <button type="submit"
+                            class="w-full py-3 rounded-lg bg-accent hover:bg-accent-hover text-black font-bold text-xs uppercase tracking-wider transition-all">
+                            Получить в WhatsApp / Telegram
+                        </button>
+                        <p class="text-[10px] text-gray-500 text-center">Без спама. Отправка занимает 30 секунд.</p>
+                    </form>
+
+                    <div id="leadDone" class="hidden text-center py-6 space-y-2">
+                        <div class="text-2xl">✅</div>
+                        <div class="text-sm font-bold text-white">Гайд отправлен!</div>
+                        <p class="text-xs text-gray-400">Ваш промокод: <strong class="text-accent">PEAK3000</strong>
+                            активирован.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- СТАНДАРТЫ КАЧЕСТВА И ДОКАЗАТЕЛЬНАЯ БАЗА -->
+    <section class="py-16 bg-dark-900 border-t border-dark-border" id="quality">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-12">
+                <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Прозрачность</span>
+                <h3 class="text-2xl font-bold text-white mt-1">Почему PEAK LAB доверяют в РК</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+                <div class="p-6 rounded-xl bg-dark-950 border border-dark-border space-y-2">
+                    <div class="text-2xl">🏛️</div>
+                    <h4 class="text-sm font-bold text-white">Сертификация ЕАС & РК</h4>
+                    <p class="text-xs text-gray-400">Свидетельства государственной регистрации (СГР) на все позиции.</p>
+                </div>
+                <div class="p-6 rounded-xl bg-dark-950 border border-dark-border space-y-2">
+                    <div class="text-2xl">🔬</div>
+                    <h4 class="text-sm font-bold text-white">Независимые тесты</h4>
+                    <p class="text-xs text-gray-400">Регулярная хроматография (ВЭЖХ) фактического содержания активного
+                        белка.</p>
+                </div>
+                <div class="p-6 rounded-xl bg-dark-950 border border-dark-border space-y-2">
+                    <div class="text-2xl">🚫</div>
+                    <h4 class="text-sm font-bold text-white">Zero Spiking</h4>
+                    <p class="text-xs text-gray-400">Никакого подмешивания дешевого глицина или таурина для завышения
+                        цифр.</p>
+                </div>
+                <div class="p-6 rounded-xl bg-dark-950 border border-dark-border space-y-2">
+                    <div class="text-2xl">💳</div>
+                    <h4 class="text-sm font-bold text-white">Kaspi Pay / Red</h4>
+                    <p class="text-xs text-gray-400">Безопасная оплата через официальный QR-код Kaspi с выдачей
+                        фискального чека.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ВОПРОСЫ И ОТВЕТЫ (FAQ) -->
+    <section class="py-16 bg-dark-950 border-t border-dark-border" id="faq">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-2xl font-bold text-white text-center mb-10">Часто задаваемые вопросы</h3>
+
+            <div class="space-y-3">
+                <div class="border border-dark-border rounded-xl bg-dark-900 overflow-hidden">
+                    <button onclick="toggleFaq(1)"
+                        class="w-full p-4 text-left flex justify-between items-center text-xs sm:text-sm font-semibold text-white">
+                        <span>Как быстро доставляется заказ по Казахстану?</span>
+                        <span id="faqIcon-1">+</span>
+                    </button>
+                    <div id="faqContent-1" class="hidden p-4 pt-0 text-xs text-gray-400 border-t border-dark-border/40">
+                        По Алматы и Астане доставка день-в-день через Яндекс Доставку или курьера. В другие города
+                        (Шымкент, Караганда, Актобе, Атырау и др.) доставка занимает 2-3 рабочих дня через CDEK или
+                        KazPost. При заказе от 25 000 ₸ доставка бесплатная.
+                    </div>
+                </div>
+
+                <div class="border border-dark-border rounded-xl bg-dark-900 overflow-hidden">
+                    <button onclick="toggleFaq(2)"
+                        class="w-full p-4 text-left flex justify-between items-center text-xs sm:text-sm font-semibold text-white">
+                        <span>Как оплатить через Kaspi QR или Kaspi Red?</span>
+                        <span id="faqIcon-2">+</span>
+                    </button>
+                    <div id="faqContent-2" class="hidden p-4 pt-0 text-xs text-gray-400 border-t border-dark-border/40">
+                        При оформлении заказа менеджер выставляет удаленный счет в приложении Kaspi.kz (Kaspi QR), либо
+                        курьер предоставляет POS-терминал. Доступна рассрочка Kaspi Red 0-0-3 на 3 месяца без переплат.
+                    </div>
+                </div>
+
+                <div class="border border-dark-border rounded-xl bg-dark-900 overflow-hidden">
+                    <button onclick="toggleFaq(3)"
+                        class="w-full p-4 text-left flex justify-between items-center text-xs sm:text-sm font-semibold text-white">
+                        <span>Подходит ли изолят при непереносимости лактозы?</span>
+                        <span id="faqIcon-3">+</span>
+                    </button>
+                    <div id="faqContent-3" class="hidden p-4 pt-0 text-xs text-gray-400 border-t border-dark-border/40">
+                        Да! В нашем изоляте ISO-PEAK содержание лактозы снижено микрофильтрацией до менее 0.2%, а также
+                        добавлен пищеварительный фермент лактаза. Никакого вздутия или дискомфорта.
+                    </div>
+                </div>
+
+                <div class="border border-dark-border rounded-xl bg-dark-900 overflow-hidden">
+                    <button onclick="toggleFaq(4)"
+                        class="w-full p-4 text-left flex justify-between items-center text-xs sm:text-sm font-semibold text-white">
+                        <span>Есть ли сертификация Халал?</span>
+                        <span id="faqIcon-4">+</span>
+                    </button>
+                    <div id="faqContent-4" class="hidden p-4 pt-0 text-xs text-gray-400 border-t border-dark-border/40">
+                        Да, исходное сырье европейских заводов проходит строгий контроль и не содержит свиного желатина
+                        или запрещенных добавок, имеет международный сертификат Halal.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ФУТЕР -->
+    <footer class="bg-dark-950 border-t border-dark-border py-10 text-xs text-gray-500">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-2">
+                <span
+                    class="w-6 h-6 rounded bg-white text-black font-bold flex items-center justify-center text-xs">▲</span>
+                <span class="text-white font-semibold">PEAK LAB KAZAKHSTAN</span>
+                <span>&bull; ТОО «Peak Lab Nutrition KZ», г. Алматы</span>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <span>Пн-Вс: 09:00 - 21:00</span>
+                <span>Тел: +7 (727) 312-40-50</span>
+                <a href="https://wa.me/77070253101" class="text-accent hover:underline">WhatsApp-поддержка</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- КОРЗИНА (Slide-over Cart Drawer) -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 hidden">
+        <div onclick="toggleCart()" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+        <div
+            class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-dark-900 border-l border-dark-border p-6 flex flex-col justify-between shadow-2xl">
+
+            <div>
+                <div class="flex items-center justify-between pb-4 border-b border-dark-border">
+                    <h3 class="text-base font-bold text-white">Ваша корзина</h3>
+                    <button onclick="toggleCart()" class="text-gray-400 hover:text-white text-lg">✕</button>
+                </div>
+
+                <div id="cartItemsList" class="divide-y divide-dark-border/60 max-h-[60vh] overflow-y-auto py-2">
+                    <div class="py-12 text-center text-xs text-gray-500" id="emptyCartText">
+                        Корзина пуста. Добавьте товары из каталога.
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-dark-border space-y-3">
+                <div class="flex items-center justify-between text-xs text-gray-400">
+                    <span>Сумма заказа:</span>
+                    <span id="cartSubtotal" class="text-base font-bold text-white">0 ₸</span>
+                </div>
+                <div class="text-[11px] text-gray-500 flex items-center gap-1">
+                    <span>📦 Доставка:</span>
+                    <span id="deliveryText" class="text-gray-300">рассчитывается при оформлении</span>
+                </div>
+
+                <button onclick="openCheckoutModal()" id="checkoutBtn" disabled
+                    class="w-full py-3 rounded-lg bg-accent text-black font-bold text-xs uppercase tracking-wider hover:bg-accent-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
+                    Оформить заказ (Kaspi Pay / Наложенный)
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО ОФОРМЛЕНИЯ ЗАКАЗА -->
+    <div id="checkoutModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+        <div onclick="closeCheckoutModal()" class="absolute inset-0 bg-black/75 backdrop-blur-sm"></div>
+        <div class="relative bg-dark-900 rounded-2xl border border-dark-border p-6 sm:p-8 max-w-md w-full shadow-2xl">
+            <button onclick="closeCheckoutModal()"
+                class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg">✕</button>
+
+            <div class="text-xs font-bold text-accent uppercase tracking-wider mb-1">Быстрый заказ в РК</div>
+            <h4 class="text-xl font-bold text-white mb-4">Оформление доставки</h4>
+
+            <form onsubmit="finishOrder(event)" class="space-y-3.5">
+                <div>
+                    <label class="block text-[11px] text-gray-400 mb-1">ФИО получателя</label>
+                    <input type="text" required placeholder="Касымов Данияр"
+                        class="w-full bg-dark-950 border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-gray-400">
+                </div>
+                <div>
+                    <label class="block text-[11px] text-gray-400 mb-1">Номер телефона (для Kaspi и курьера)</label>
+                    <input type="tel" required placeholder="+7 (705) 123-45-67"
+                        class="w-full bg-dark-950 border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-gray-400">
+                </div>
+                <div>
+                    <label class="block text-[11px] text-gray-400 mb-1">Город и адрес доставки</label>
+                    <input type="text" required placeholder="г. Алматы, пр. Абая 50, кв 12"
+                        class="w-full bg-dark-950 border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-gray-400">
+                </div>
+                <div>
+                    <label class="block text-[11px] text-gray-400 mb-1">Способ оплаты</label>
+                    <select
+                        class="w-full bg-dark-950 border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-gray-400">
+                        <option>Kaspi QR / Kaspi Red (удаленный счет)</option>
+                        <option>Оплата курьеру при получении (наличные / карта)</option>
+                        <option>Перевод / Банковская карта</option>
+                    </select>
+                </div>
+
+                <div class="p-3 rounded-lg bg-dark-950 border border-dark-border text-xs flex justify-between">
+                    <span class="text-gray-400">К оплате:</span>
+                    <span id="modalFinalPrice" class="font-bold text-white">0 ₸</span>
+                </div>
+
+                <button type="submit"
+                    class="w-full py-3 rounded-lg bg-accent text-black font-bold text-xs uppercase tracking-wider hover:bg-accent-hover transition-colors">
+                    Подтвердить заказ
+                </button>
+            </form>
+
+            <div id="orderSuccessBox" class="hidden text-center py-6 space-y-2">
+                <div class="text-3xl">🎉</div>
+                <div class="text-base font-bold text-white">Рахмет! Заказ принят.</div>
+                <p class="text-xs text-gray-400">Менеджер свяжется с вами в течение 5 минут для отправки счета в Kaspi.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT ДАННЫЕ И ЛОГИКА -->
+    <script>
+        // База товаров спортивного питания PEAK LAB (Цены в тенге, только герметичные баночки в упаковке)
+        const products = [
+            {
+                id: 1,
+                name: "ISO-PEAK Whey Isolate 90%",
+                shortName: "ISO-PEAK 90",
+                category: "protein",
+                price: 19990,
+                oldPrice: 24990,
+                badge: "ХИТ ПРОДАЖ",
+                color: "#c2f03c",
+                highlightText: "28G PROTEIN",
+                subHighlight: "0G SUGAR • DIGEZYME®",
+                volume: "1000 г (33 порции)",
+                volumeShort: "1000G / 33 SERV",
+                flavor: "Шоколадный фадж",
+                desc: "Чистейший гидролизованный изолят. 28г белка на порцию, 0г сахара, без лактозы."
+            },
+            {
+                id: 2,
+                name: "CREA-PEAK Creapure® Monohydrate",
+                shortName: "CREA-PEAK",
+                category: "creatine",
+                price: 8990,
+                oldPrice: 11490,
+                badge: "100% ЧИСТОТА",
+                color: "#38bdf8",
+                highlightText: "CREAPURE®",
+                subHighlight: "MICRONIZED MONOHYDRATE",
+                volume: "300 г (60 порций)",
+                volumeShort: "300G / 60 SERV",
+                flavor: "Pure (Без вкуса)",
+                desc: "Немецкий микронизированный моногидрат креатина Creapure®. Максимальный прирост силы."
+            },
+            {
+                id: 3,
+                name: "MASS-PEAK Clean Gainer Complex",
+                shortName: "MASS-PEAK",
+                category: "gainer",
+                price: 21490,
+                oldPrice: 26990,
+                badge: "ЧИСТАЯ МАССА",
+                color: "#f59e0b",
+                highlightText: "45G PRO • 650 KCAL",
+                subHighlight: "COMPLEX OATS MATRIX",
+                volume: "2500 г (25 порций)",
+                volumeShort: "2500G / 25 SERV",
+                flavor: "Ванильное печенье",
+                desc: "Гейнер на сложных овсяных углеводах без сахара и мальтодекстрина. 45г белка и 650 ккал."
+            },
+            {
+                id: 4,
+                name: "PRE-IGNITE High-Focus Matrix",
+                shortName: "PRE-IGNITE",
+                category: "preworkout",
+                price: 14990,
+                oldPrice: 18990,
+                badge: "МОЩНЫЙ ПАМП",
+                color: "#f43f5e",
+                highlightText: "PUMP & ENERGY",
+                subHighlight: "6G CITRULLINE • BETA-ALANINE",
+                volume: "360 г (30 порций)",
+                volumeShort: "360G / 30 SERV",
+                flavor: "Кислое яблоко",
+                desc: "Цитруллин малат 6г, бета-аланин 3.2г, альфа-GPC и кофеин. Взрывная энергия без тремора."
+            },
+            {
+                id: 5,
+                name: "HYDRO-EAA + Electrolyte Balance",
+                shortName: "HYDRO-EAA",
+                category: "bcaa",
+                price: 12490,
+                oldPrice: 15990,
+                badge: "РЕКОМПОЗИЦИЯ",
+                color: "#a855f7",
+                highlightText: "9 ESSENTIAL AMINOS",
+                subHighlight: "COCONUT WATER + ELECTROLYTES",
+                volume: "400 г (40 порций)",
+                volumeShort: "400G / 40 SERV",
+                flavor: "Лесные ягоды",
+                desc: "Полный комплекс из 9 незаменимых аминокислот + кокосовая вода и электролиты."
+            },
+            {
+                id: 6,
+                name: "OMEGA-3 Ultra Triglyceride 1000mg",
+                shortName: "OMEGA-3 PRO",
+                category: "vitamins",
+                price: 7990,
+                oldPrice: 9990,
+                badge: "ЗДОРОВЬЕ",
+                color: "#06b6d4",
+                highlightText: "EPA 500 / DHA 250",
+                subHighlight: "WILD FISH TRIGLYCERIDES",
+                volume: "90 мягких капсул",
+                volumeShort: "90 SOFTGELS",
+                flavor: "Нейтральный",
+                desc: "Очищенный рыбий жир диких морских рыб в форме натуральных триглицеридов."
+            },
+            {
+                id: 7,
+                name: "100% GOLDEN WHEY Concentrate",
+                shortName: "GOLDEN WHEY",
+                category: "protein",
+                price: 15990,
+                oldPrice: 19990,
+                badge: "БАЗА",
+                color: "#eab308",
+                highlightText: "WPC-80 PURE RAW",
+                subHighlight: "24G PROTEIN • CLEAN FORMULA",
+                volume: "900 г (30 порций)",
+                volumeShort: "900G / 30 SERV",
+                flavor: "Соленая карамель",
+                desc: "Европейский сывороточный протеин 80% концентрации с натуральными вкусовыми экстрактами."
+            },
+            {
+                id: 8,
+                name: "JOINT-SHIELD Glucosamine & Chondroitin",
+                shortName: "JOINT-SHIELD",
+                category: "vitamins",
+                price: 8490,
+                oldPrice: 10990,
+                badge: "СУСТАВЫ",
+                color: "#10b981",
+                highlightText: "GLUCOSAMINE + MSM",
+                subHighlight: "CHONDROITIN COMPLEX",
+                volume: "120 таблеток",
+                volumeShort: "120 TABLETS",
+                flavor: "Без вкуса",
+                desc: "Защита связок и суставов при тяжелых базовых нагрузках. Глюкозамин, хондроитин + MSM."
+            }
+        ];
+
+        let cart = [];
+
+        // Генерация реалистичной 3D векторной баночки спортпита (без порошка)
+        function createTubSvg(p, heightClass = "h-44") {
+            return `
+            <svg viewBox="0 0 200 240" class="w-full ${heightClass} object-contain transition-transform duration-500 group-hover:scale-105 select-none drop-shadow-xl">
+              <defs>
+                <linearGradient id="bodyGrad-${p.id}" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#161920" />
+                  <stop offset="16%" stop-color="#2a313e" />
+                  <stop offset="42%" stop-color="#161920" />
+                  <stop offset="85%" stop-color="#0c0e12" />
+                  <stop offset="100%" stop-color="#07080a" />
+                </linearGradient>
+                <linearGradient id="lidGrad-${p.id}" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#20242e" />
+                  <stop offset="30%" stop-color="#384050" />
+                  <stop offset="70%" stop-color="#191c24" />
+                  <stop offset="100%" stop-color="#0b0c10" />
+                </linearGradient>
+              </defs>
+              <ellipse cx="100" cy="226" rx="66" ry="9" fill="rgba(0,0,0,0.7)" />
+              <!-- Крышка банки -->
+              <rect x="54" y="20" width="92" height="20" rx="3" fill="url(#lidGrad-${p.id})" />
+              <line x1="64" y1="20" x2="64" y2="40" stroke="#12151b" stroke-width="2" />
+              <line x1="76" y1="20" x2="76" y2="40" stroke="#12151b" stroke-width="2" />
+              <line x1="88" y1="20" x2="88" y2="40" stroke="#12151b" stroke-width="2" />
+              <line x1="100" y1="20" x2="100" y2="40" stroke="#12151b" stroke-width="2" />
+              <line x1="112" y1="20" x2="112" y2="40" stroke="#12151b" stroke-width="2" />
+              <line x1="124" y1="20" x2="124" y2="40" stroke="#12151b" stroke-width="2" />
+              <line x1="136" y1="20" x2="136" y2="40" stroke="#12151b" stroke-width="2" />
+              <!-- Горлышко -->
+              <rect x="60" y="38" width="80" height="8" fill="#0f1116" />
+              <!-- Тело банки -->
+              <rect x="36" y="44" width="128" height="172" rx="14" fill="url(#bodyGrad-${p.id})" stroke="#232733" stroke-width="1.5" />
+              <!-- Фирменная этикетка -->
+              <rect x="38" y="68" width="124" height="124" fill="#0b0d11" stroke="#1e222c" stroke-width="1" />
+              <rect x="38" y="68" width="4" height="124" fill="${p.color}" />
+              <!-- Текст этикетки -->
+              <text x="48" y="84" font-size="7" font-family="monospace" font-weight="bold" fill="${p.color}" letter-spacing="1">PEAK LAB // KZ</text>
+              <text x="48" y="103" font-size="12" font-family="sans-serif" font-weight="900" fill="#ffffff">${p.shortName}</text>
+              <text x="48" y="115" font-size="6.5" font-family="sans-serif" font-weight="bold" fill="#9ca3af">${p.badge}</text>
+              <line x1="48" y1="122" x2="152" y2="122" stroke="#232733" stroke-width="0.8" />
+              <text x="48" y="139" font-size="10.5" font-family="sans-serif" font-weight="900" fill="${p.color}">${p.highlightText}</text>
+              <text x="48" y="150" font-size="6.5" font-family="monospace" fill="#d1d5db">${p.subHighlight}</text>
+              <rect x="48" y="162" width="104" height="18" rx="3" fill="#13161f" />
+              <text x="54" y="174" font-size="7" font-family="monospace" font-weight="bold" fill="#ffffff">NET WT: ${p.volumeShort}</text>
+            </svg>`;
+        }
+
+        // Форматирование тенге
+        function formatKZT(amount) {
+            return new Intl.NumberFormat('ru-RU').format(amount) + ' ₸';
+        }
+
+        // Рендер каталога
+        function renderProducts(items) {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+
+            items.forEach(p => {
+                const card = document.createElement('div');
+                card.className = "bg-dark-900 rounded-2xl border border-dark-border p-4 sm:p-5 flex flex-col justify-between hover:border-gray-600 transition-all group fade-in";
+                card.innerHTML = `
+                    <div>
+                        <div class="relative overflow-hidden rounded-xl bg-dark-950 p-3 mb-4 flex items-center justify-center min-h-[190px]">
+                            <span class="absolute top-2 left-2 z-10 text-[10px] font-bold bg-dark-850/90 backdrop-blur-sm border border-dark-border text-gray-200 px-2.5 py-0.5 rounded">
+                                ${p.badge}
+                            </span>
+                            ${createTubSvg(p)}
+                        </div>
+
+                        <div class="text-[11px] text-gray-400 mb-1 flex items-center justify-between">
+                            <span class="font-mono text-gray-300">${p.volume}</span>
+                            <span class="text-gray-500 truncate max-w-[140px]">${p.flavor}</span>
+                        </div>
+
+                        <h4 class="text-sm font-bold text-white group-hover:text-accent transition-colors leading-snug mb-1.5">
+                            ${p.name}
+                        </h4>
+
+                        <p class="text-xs text-gray-400 leading-relaxed mb-4 line-clamp-2">
+                            ${p.desc}
+                        </p>
+                    </div>
+
+                    <div>
+                        <div class="pt-3 border-t border-dark-border flex items-baseline gap-2 mb-3">
+                            <span class="text-base font-bold text-white">${formatKZT(p.price)}</span>
+                            <span class="text-xs text-gray-500 line-through">${formatKZT(p.oldPrice)}</span>
+                        </div>
+
+                        <button onclick="addToCart(${p.id})" class="w-full py-2.5 rounded-lg bg-dark-800 hover:bg-white hover:text-black border border-dark-border text-xs font-semibold text-white transition-all flex items-center justify-center gap-1.5">
+                            <span>В корзину</span>
+                            <span>&bull;</span>
+                            <span>${formatKZT(p.price)}</span>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Фильтрация по категориям
+        function filterCategory(cat) {
+            document.querySelectorAll('.cat-tab').forEach(b => {
+                b.className = "cat-tab px-3 py-1.5 rounded-md text-xs font-medium text-gray-400 hover:text-white transition-all";
+            });
+            const activeTab = document.getElementById('tab-' + cat);
+            if (activeTab) {
+                activeTab.className = "cat-tab px-3 py-1.5 rounded-md text-xs font-medium text-black bg-white transition-all";
+            }
+
+            if (cat === 'all') {
+                renderProducts(products);
+            } else {
+                renderProducts(products.filter(p => p.category === cat));
+            }
+        }
+
+        // Корзина
+        function toggleCart() {
+            const drawer = document.getElementById('cartDrawer');
+            drawer.classList.toggle('hidden');
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+            updateCartUI();
+
+            const drawer = document.getElementById('cartDrawer');
+            if (drawer.classList.contains('hidden')) {
+                drawer.classList.remove('hidden');
+            }
+        }
+
+        function updateCartQty(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (!item) return;
+            item.qty += delta;
+            if (item.qty <= 0) {
+                cart = cart.filter(i => i.id !== productId);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const list = document.getElementById('cartItemsList');
+            const subtotalEl = document.getElementById('cartSubtotal');
+            const badge = document.getElementById('cartCountBadge');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            const deliveryText = document.getElementById('deliveryText');
+
+            const totalCount = cart.reduce((acc, i) => acc + i.qty, 0);
+            badge.innerText = totalCount;
+
+            if (cart.length === 0) {
+                list.innerHTML = `<div class="py-12 text-center text-xs text-gray-500">Корзина пуста. Добавьте товары из каталога.</div>`;
+                subtotalEl.innerText = "0 ₸";
+                checkoutBtn.disabled = true;
+                deliveryText.innerText = "рассчитывается при оформлении";
+                return;
+            }
+
+            checkoutBtn.disabled = false;
+            let sum = 0;
+            list.innerHTML = '';
+
+            cart.forEach(item => {
+                sum += item.price * item.qty;
+                const row = document.createElement('div');
+                row.className = "py-3 flex items-center justify-between gap-3";
+                row.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-11 rounded-lg bg-dark-950 border border-dark-border flex flex-col items-center justify-center shrink-0 p-1">
+                            <span class="text-[10px] font-black" style="color: ${item.color}">▲</span>
+                            <span class="text-[7.5px] font-mono text-gray-300 font-bold leading-tight text-center truncate max-w-full">${item.shortName}</span>
+                        </div>
+                        <div>
+                            <div class="text-xs font-semibold text-white leading-tight">${item.name}</div>
+                            <div class="text-[11px] text-gray-400 mt-0.5">${formatKZT(item.price)}</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="updateCartQty(${item.id}, -1)" class="w-6 h-6 rounded bg-dark-800 text-gray-300 hover:text-white flex items-center justify-center text-xs font-bold">-</button>
+                        <span class="text-xs font-semibold text-white w-4 text-center">${item.qty}</span>
+                        <button onclick="updateCartQty(${item.id}, 1)" class="w-6 h-6 rounded bg-dark-800 text-gray-300 hover:text-white flex items-center justify-center text-xs font-bold">+</button>
+                    </div>
+                `;
+                list.appendChild(row);
+            });
+
+            subtotalEl.innerText = formatKZT(sum);
+
+            if (sum >= 25000) {
+                deliveryText.innerHTML = `<span class="text-emerald-400 font-semibold">Бесплатно (заказ от 25 000 ₸)</span>`;
+            } else {
+                deliveryText.innerText = `1 200 ₸ по РК (добавьте на ${formatKZT(25000 - sum)} до бесплатной)`;
+            }
+        }
+
+        // Оформление заказа
+        function openCheckoutModal() {
+            const sum = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+            document.getElementById('modalFinalPrice').innerText = formatKZT(sum);
+            document.getElementById('cartDrawer').classList.add('hidden');
+            document.getElementById('checkoutModal').classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').classList.add('hidden');
+        }
+
+        function finishOrder(e) {
+            e.preventDefault();
+            e.target.classList.add('hidden');
+            document.getElementById('orderSuccessBox').classList.remove('hidden');
+            cart = [];
+            updateCartUI();
+        }
+
+        // Лид-магнит
+        function submitLead(e) {
+            e.preventDefault();
+            e.target.classList.add('hidden');
+            document.getElementById('leadDone').classList.remove('hidden');
+        }
+
+        // Калькулятор
+        function recalc() {
+            const weight = parseFloat(document.getElementById('calcWeight').value) || 75;
+            const goal = document.getElementById('calcGoal').value;
+            const freq = document.getElementById('calcFreq').value;
+
+            let coeff = 1.6;
+            if (goal === 'mass') coeff = 2.0;
+            if (goal === 'cut') coeff = 2.1;
+            if (freq === '5') coeff += 0.2;
+
+            const total = Math.round(weight * coeff);
+            document.getElementById('resProtein').innerText = total;
+
+            const adv = document.getElementById('resAdvice');
+            if (goal === 'mass') {
+                adv.innerText = `Рекомендация: 1 порция MASS-PEAK Clean Gainer + 5г Creapure® Monohydrate ежедневно.`;
+            } else if (goal === 'cut') {
+                adv.innerText = `Рекомендация: 2 скупа ISO-PEAK Whey Isolate (0г сахара) + 1 порция Hydro-EAA между приемами пищи.`;
+            } else {
+                adv.innerText = `Рекомендация: 1-2 скупа ISO-PEAK Whey (56г белка) + 5г Creapure® Monohydrate утром.`;
+            }
+        }
+
+        // FAQ Toggle
+        function toggleFaq(id) {
+            const content = document.getElementById('faqContent-' + id);
+            const icon = document.getElementById('faqIcon-' + id);
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.innerText = '−';
+            } else {
+                content.classList.add('hidden');
+                icon.innerText = '+';
+            }
+        }
+
+        // Инициализация при загрузке
+        if (document.readyState === 'loading') {
+            window.addEventListener('DOMContentLoaded', () => renderProducts(products));
+        } else {
+            renderProducts(products);
+        }
+    </script>
+</body>
+
+</html>
